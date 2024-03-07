@@ -14,7 +14,8 @@
     "@capacitor/core": "^5.7.2",
     "@capacitor/ios": "^5.7.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.2"
   },
   "devDependencies": {
     "@capacitor/cli": "^5.7.2",
