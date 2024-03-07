@@ -1,0 +1,8 @@
+{
+  "appId": "com.applin.app",
+  "appName": "Applin",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
