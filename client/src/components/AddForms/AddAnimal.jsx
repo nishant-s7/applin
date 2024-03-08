@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { BASE_URL } from "../helpers/baseUrl";
+import { BASE_URL } from "../../helpers/baseUrl";
 import {
   Box,
   FormControl,

@@ -8,6 +8,6 @@ import Add from "./Add";
 import Info from "./Info";
 import Result from "./Result";
 import AnimalDetails from "./AnimalDetails/AnimalDetails";
-import AddAnimal from "./AddAnimal";
+import { AddAnimal } from "./AddForms";
 
 export { Header, Footer, Landing, Reveal, Sales, Expenses, Add, Info, Result, AnimalDetails, AddAnimal };
