@@ -15,16 +15,28 @@ exports.getSales = async (req, res) => {
 };
 
 exports.addSale = async (req, res) => {
-  const { userId, products, description } = req.body;
+  const { userId, productIds, description } = req.body;
   try {
     let amount = 0;
     const prices = await Price.find();
+
+    const products = await Promise.all(
+      productIds.map(async (id) => {
+        return await Product.findById(id);
+      })
+    );
+
     for (let i = 0; i < products.length; i++) {
       const price = prices.find((price) => price.type === products[i].type);
       amount += price * products[i].quantity;
     }
 
-    productIds = products.map((product) => product._id);
+    products.forEach(async (product) => {
+      const p = await Product.findById(product._id);
+      p.status = "Sold";
+      await p.save();
+    });
+
     const sale = new Sale({
       user: userId,
       amount,

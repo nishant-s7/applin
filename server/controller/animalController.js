@@ -2,6 +2,7 @@ const Animal = require("../model/Animal");
 const Product = require("../model/Product");
 const Vaccination = require("../model/Vaccination");
 const Breeding = require("../model/Breeding");
+const User = require("../model/User");
 
 exports.addAnimal = async (req, res, next) => {
   const { type, breed, dob, gender, userId } = req.body;
@@ -74,10 +75,12 @@ exports.getAnimals = async (req, res, next) => {
 };
 
 exports.addProduct = async (req, res, next) => {
-  const { animalId, quantity } = req.body;
+  const { animalId, quantity, processing, expiresOn } = req.body;
   try {
     const product = new Product({
       quantity,
+      processing,
+      expiresOn,
       animal: animalId,
     });
     const result = await product.save();
