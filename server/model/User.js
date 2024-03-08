@@ -3,16 +3,43 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  email: { type: String, required: true },
-  password: { type: String, required: true },
-  firstName: { type: String, default: "New" },
-  lastName: { type: String, default: "User" },
-  phoneNo: { type: Number },
+  firstName: {
+    type: String,
+    default: "New",
+  },
+  lastName: {
+    type: String,
+    default: "User",
+  },
+  email: {
+    type: String,
+  },
+  phoneNo: {
+    type: Number,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  animals: [
+    {
+      type: {
+        type: String,
+        required: true,
+      },
+      count: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
+
   isAdmin: {
     type: Boolean,
     default: false,
   },
-  isSeller:{
+  isSeller: {
     type: Boolean,
     default: false,
   },
