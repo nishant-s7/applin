@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Landing() {
   return (
-    <div className="flex flex-col justify-center items-center p-4 space-y-8">
+    <div className="flex flex-col justify-center items-center p-4 space-y-8 bg-white rounded-3xl">
 
       <Reveal>
         <Link to={`/animal/Cow`}>
