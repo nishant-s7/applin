@@ -33,7 +33,7 @@ exports.addSale = async (req, res) => {
 
     products.forEach(async (product) => {
       const p = await Product.findById(product._id);
-      pr.status = "Sold";
+      p.status = "Sold";
       await p.save();
     });
 
