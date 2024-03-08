@@ -10,6 +10,7 @@ const morgan = require("morgan");
 
 const authRoutes = require("./routes/authRoutes");
 const animalRoutes = require("./routes/animalRoutes");
+const salesRoutes = require("./routes/salesRoutes");
 
 const MONGO_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@applin.2urmjpy.mongodb.net/applin`;
 
@@ -45,6 +46,7 @@ app.use(
 
 app.use("/auth", authRoutes);
 app.use("/animal", animalRoutes);
+app.use('/sales', salesRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);

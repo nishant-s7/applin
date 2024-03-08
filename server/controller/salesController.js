@@ -32,9 +32,9 @@ exports.addSale = async (req, res) => {
     }
 
     products.forEach(async (product) => {
-      const product = await Product.findById(product._id);
-      product.status = "Sold";
-      await product.save();
+      const p = await Product.findById(product._id);
+      p.status = "Sold";
+      await p.save();
     });
 
     const sale = new Sale({
