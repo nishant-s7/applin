@@ -7,6 +7,10 @@ const animalSchema = new Schema({
     type: String,
     required: true,
   },
+  gender: {
+    type: String,
+    default: "Male",
+  },
   breed: {
     type: String,
     required: true,
@@ -18,6 +22,10 @@ const animalSchema = new Schema({
   healthStatus: {
     type: String,
     default: "Healthy", // Healthy, Sick, Recovering
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
   productionHistory: [
     {
