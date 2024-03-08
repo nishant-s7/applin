@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import { FaPhoneAlt } from "react-icons/fa";
 import { useState } from "react";
 import { BASE_URL } from "../helpers/baseUrl";
 import { useToast } from "@chakra-ui/toast";
 export const Login = () => {
+    const router = useNavigate();
+    
   const [formData, setFormData] = useState({
     phone: "",
     password: "",
@@ -19,9 +21,6 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-
-
     try {
       const response = await fetch(BASE_URL+'auth/login', {
         method: "POST",
@@ -30,18 +29,47 @@ export const Login = () => {
         },
         body: JSON.stringify(formData),
       });
-
-      if (response.ok) {
-        // Handle success, e.g., redirect or show a success message
-        console.log("Sign-up successful");
-      } else {
-        // Handle error, e.g., show an error message to the user
-        console.error("Sign-up failed");
+      const res = await response.json();
+      if (response.status == 433) {
+        // setbuttondisabled(false)
+        router("/login");
+          toast({
+            title: res.message,
+            status: "error",
+            isClosable: true,
+          });
+        } else if (response.status == 403) {
+        // setbuttondisabled(false)
+        router("/login");
+          toast({
+            title: res.message,
+            status: "error",
+            isClosable: true,
+          });
+        } else if (response.status == 201) {
+        // setbuttondisabled(false)
+    
+          toast({
+            title: res.message,
+            status: "success",
+            isClosable: true,
+          });
+          localStorage.setItem("token", res.token);
+          localStorage.setItem("userId", res.userId);
+          const remainingMilliseconds = 60 * 60 * 1000;
+          const expiryDate = new Date(
+            new Date().getTime() + remainingMilliseconds
+          );
+          localStorage.setItem("expiryDate", expiryDate.toISOString());
+          router("/");
+        }
+       else {
+        router.push("/login");
       }
-    } catch (error) {
-      console.error("Error during sign-up:", error);
+    }catch(err){
+        console.log(err)
     }
-  };
+    }
   return (
     <section class="bg-white ">
       <div class="container flex items-center justify-center min-h-screen px-6 mx-auto">

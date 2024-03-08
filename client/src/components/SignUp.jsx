@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import { FaPhoneAlt } from "react-icons/fa";
+import { useState } from "react";
 import { BASE_URL } from "../helpers/baseUrl";
+import { useToast } from "@chakra-ui/toast";
 
 export const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ export const SignUp = () => {
     phone: "",
     password: "",
   });
+  const toast = useToast();
+  const router = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,15 +33,30 @@ export const SignUp = () => {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        // Handle success, e.g., redirect to another page
-        console.log("User signed up successfully!");
-      } else {
-        // Handle errors
-        console.error("Error signing up:", response.statusText);
+      const res = await response.json();
+      if (response.status == 433) {
+      // setbuttondisabled(false)
+        router.push("/signUp");
+        toast({
+          title: res.message,
+          status: "error",
+          isClosable: true,
+        });
+      } else if (response.status == 201) {
+      // setbuttondisabled(false)
+      toast({
+          title: res.message,
+          status: "success",
+          isClosable: true,
+        });
+        router("/login");
       }
-    } catch (error) {
-      console.error("Error:", error.message);
+     else {
+      // setbuttondisabled(false)
+      router("/signUp");
+    }
+  }catch(err){
+    console.log(err)
     }
   };
 
