@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"
-const App = () => {
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+function App() {
   return (
-    <>
-      <h1 className="text-color1">Hello, World!</h1>
-      <Link className="rounded-lg h-40 w-40" to='/temp'>Temp</Link>
-    </>
+    <div>
+      
+    </div>
   )
 }
 

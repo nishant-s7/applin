@@ -7,11 +7,6 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/temp" element={<Temp />} />
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
 )
