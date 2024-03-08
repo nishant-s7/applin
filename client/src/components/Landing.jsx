@@ -48,7 +48,9 @@ function Landing() {
       }
       {
         !userLoggedIn &&
-        <img src="/images/cow.png" />
+        <div>
+          
+        </div>
       }
     </div>
   )
