@@ -20,6 +20,7 @@ Cost model, consumption, production and management (Cow, Buffalo)
 
 ## Planned Schema
 
+
 - **User**
   - firstName
   - lastName
