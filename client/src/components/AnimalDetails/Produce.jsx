@@ -1,46 +1,58 @@
 import { useOutletContext } from "react-router-dom";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  TableContainer,
+} from '@chakra-ui/react'
 
 const Produce = () => {
   const [animal, colorHead] = useOutletContext();
 
   return (
     <>
+    <TableContainer>
       {animal?.productionHistory?.length > 0 ? (
-        <table className="table-auto mx-auto rounded-lg max-h-[550px] w-[400px] overflow-scroll">
-          <thead>
-            <tr>
-              <th
+        <Table className="table-auto mx-auto rounded-lg max-h-[550px] w-[400px] overflow-scroll">
+          <Thead>
+            <Tr>
+              <Th
                 className={`py-3 px-5 border-b whitespace-normal text-center rounded-tl-lg ${
                   colorHead && "bg-color1 text-white"
                 }`}
               >
                 Quantity
-              </th>
-              <th
+              </Th>
+              <Th
                 className={`py-3 px-5 border-b whitespace-normal text-center rounded-tr-lg ${
                   colorHead && "bg-color1 text-white"
                 }`}
               >
                 Date
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+              </Th>
+            </Tr>
+          </Thead>
+          <Tbody>
             {animal?.productionHistory?.map((row) => (
-              <tr key={row._id}>
-                <td className="py-2 text-center border-b break-words">
+              <Tr key={row._id}>
+                <Td className="py-2 text-center border-b break-words">
                   {row?.quantity}
-                </td>
-                <td className="py-2 text-center border-b break-words">
+                </Td>
+                <Td className="py-2 text-center border-b break-words">
                   {new Date(row?.createdAt).toLocaleDateString()}
-                </td>
-              </tr>
+                </Td>
+              </Tr>
             ))}
-          </tbody>
-        </table>
+          </Tbody>
+        </Table>
       ) : (
         <h1 className="text-center text-red-500 text-3xl">No milk produces!</h1>
       )}
+    </TableContainer>
+
     </>
   );
 };
