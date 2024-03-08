@@ -4,23 +4,20 @@ import {
     Route,
   } from "react-router-dom";
 import App from "./App";
-import {
-    Landing
-} from './components'
+import { Landing, Sales, Expenses, Health } from "./components";
 import { SignUp } from "./components/SignUp";
 import { Login } from "./components/Login";
 
 const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<App />}>
-        <Route index element={<Landing />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        {/* <Route path="/rooms" element={<Rooms />} />
-        <Route path="/book/:roomId" element={<BookForm />} />
-        <Route path="/addRoom" element={<AddRoom />} />
-        <Route path="/checkout" element={<CheckoutForm />} /> */}
-      </Route>
-    )
+  createRoutesFromElements(
+    <Route path="/" element={<App />}>
+      <Route index element={<Landing />} />
+      <Route path="/sales" element={<Sales />} />
+      <Route path="/expenses" element={<Expenses />} />
+      <Route path="/health" element={<Health />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/login" element={<Login />} />
+    </Route>
+  )
 );
 export default router;
