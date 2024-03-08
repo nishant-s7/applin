@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Header, Footer } from "./components";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +6,7 @@ import { userToken, userId as setuserId } from "./store/authSlice";
 
 const App = () => { 
   const dispatch = useDispatch();
+  const router = useNavigate();
   const auth = useSelector((state) => state.auth.userToken);
 
   const logoutHandler = () => {
