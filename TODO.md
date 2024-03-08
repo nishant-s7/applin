@@ -18,7 +18,6 @@ Cost model, consumption, production and management (Cow, Buffalo)
 
 ## Planned Schema
 
-
 - **User**
   - firstName
   - lastName
@@ -50,3 +49,10 @@ Cost model, consumption, production and management (Cow, Buffalo)
   - inseminationDate
   - expectedDeliveryDate
   - Animal
+
+# Pages
+
+1. Animals
+1. Sales
+1. Expenses
+1. Breeding
