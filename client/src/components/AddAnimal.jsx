@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { BASE_URL } from "../helpers/baseUrl";
 import {
   Box,
   FormControl,
@@ -14,10 +17,27 @@ const AddAnimal = () => {
   const [breed, setBreed] = useState("");
   const [dob, setDob] = useState("");
   const [healthStatus, setHealthStatus] = useState("Healthy");
+  const uid = useSelector((state) => state?.auth?.userId);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Form submitted");
+    try {
+      const response = await axios.post(`${BASE_URL}animal/addAnimal`, {
+        type: animalType,
+        breed: breed,
+        dob: dob,
+        gender: gender,
+        userId: uid,
+      });
+      console.log(response.data.message);
+      setAnimalType("");
+      setGender("Male");
+      setBreed("");
+      setDob("");
+      setHealthStatus("Healthy");
+    } catch (error) {
+      console.error("Error adding animal:", error.message);
+    }
   };
 
   return (
@@ -72,7 +92,7 @@ const AddAnimal = () => {
             <option value="Recovering">Recovering</option>
           </Select>
         </FormControl>
-        <Button mt="4" colorScheme="teal" type="submit">
+        <Button mt="4" type="submit">
           Add Animal
         </Button>
       </form>
