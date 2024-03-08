@@ -4,16 +4,37 @@ const Vaccination = require("../model/Vaccination");
 const Breeding = require("../model/Breeding");
 
 exports.addAnimal = async (req, res, next) => {
-  const { type, breed, dob, gender } = req.body;
+  const { type, breed, dob, gender, userId } = req.body;
   try {
     const animal = new Animal({
       type,
       breed,
       dob,
       gender,
+      user: userId,
     });
-    const result = await animal.save();
-    res.status(201).json({ message: "Animal created!", animalId: result._id });
+    await animal.save();
+
+    const user = await User.findById(userId);
+    if (!user) {
+      const error = new Error("User not found!");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    const flag = false;
+    user.animals.find((animal) => {
+      if (animal.type === type) {
+        animal.count++;
+        flag = true;
+      }
+    });
+    if (!flag) {
+      user.animals.push({ type: type, count: 1 });
+    }
+    await user.save();
+
+    res.status(201).json({ message: "Animal created!" });
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
@@ -41,8 +62,8 @@ exports.getAnimal = async (req, res, next) => {
 
 exports.getAnimals = async (req, res, next) => {
   try {
-    const type = req.body.type;
-    const animals = await Animal.find({ type: type });
+    const { type, userId } = req.body;
+    const animals = await Animal.find({ type: type, user: userId });
     res.status(200).json({ message: "Fetched animals", animals: animals });
   } catch (err) {
     if (!err.statusCode) {
