@@ -2,10 +2,10 @@ import { Outlet } from "react-router-dom";
 import { Header, Footer } from "./components";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userToken } from "./store/authSlice";
-const App = () => {
-  const dispatch = useDispatch();
+import { userToken, userId as setuserId } from "./store/authSlice";
 
+const App = () => { 
+  const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth.userToken);
 
   const logoutHandler = () => {
@@ -36,7 +36,7 @@ const App = () => {
     setAutoLogout(remainingMilliseconds);
     if (token) {
       dispatch(userToken(token));
-      dispatch(userId(userId));
+      dispatch(setuserId(userId));
     }
   }, []);
 
