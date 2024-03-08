@@ -4,15 +4,24 @@ const Vaccination = require("../model/Vaccination");
 const Breeding = require("../model/Breeding");
 
 exports.addAnimal = async (req, res, next) => {
-  const { type, breed, dob, gender } = req.body;
+  const { type, breed, dob, gender, userId } = req.body;
   try {
     const animal = new Animal({
       type,
       breed,
       dob,
       gender,
+      user: userId
     });
     const result = await animal.save();
+
+    const user = await User.findById(userId);
+    if (!user) {
+      const error = new Error("User not found!");
+      error.statusCode = 404;
+      throw error;
+    }
+    user.animals.push(result._id);
     res.status(201).json({ message: "Animal created!", animalId: result._id });
   } catch (err) {
     if (!err.statusCode) {
