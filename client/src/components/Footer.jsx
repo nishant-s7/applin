@@ -9,7 +9,7 @@ const Footer = () => {
 
   return (
     <div
-      className="w-full min-h-fit bg-color2 text-gray-200 p-2 flex justify-evenly items-center"
+      className="w-full min-h-fit bg-color2 text-gray-200 p-2 py-6 flex justify-evenly items-center"
       style={{ position: "fixed", bottom: "0" }}
     >
       <Link

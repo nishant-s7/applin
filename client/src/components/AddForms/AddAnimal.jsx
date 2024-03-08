@@ -41,7 +41,7 @@ const AddAnimal = () => {
   };
 
   return (
-    <Box maxW="full" borderWidth="1px" borderRadius="lg" p="4" m='6' boxShadow="lg">
+    <Box maxW="full" borderWidth="1px" p="4" boxShadow="sm" backgroundColor='white' className="rounded-t-xl">
       <form onSubmit={handleSubmit}>
         <FormControl id="animalType" isRequired>
           <FormLabel>Type</FormLabel>
