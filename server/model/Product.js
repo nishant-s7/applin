@@ -8,6 +8,14 @@ const productSchema = new Schema(
       type: Number,
       required: true,
     },
+    processing: {
+      type: String,
+      default: "Raw", // Pasteurized, Raw, UHT
+    },
+    expiresOn: {
+      type: Date,
+      required: true,
+    },
     animal: {
       type: Schema.Types.ObjectId,
       ref: "Animal",
