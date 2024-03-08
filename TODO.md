@@ -20,20 +20,20 @@ Cost model, consumption, production and management (Cow, Buffalo)
 
 ## Planned Schema
 
-- **Farm**
-  - User
-  - Animal (counts)
+
 - **User**
-  - name
+  - firstName
+  - lastName
   - email
+  - phoneNo
   - password
-  - type
+  - animals
 - **Animal**
-  - Product
   - type
   - breed
   - dob
   - healthStatus
+  - productionHistory (Product)
   - vaccinationHistory (Vaccination)
   - breedingHistory (Breeding)
 - **Product**
