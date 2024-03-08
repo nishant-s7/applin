@@ -4,6 +4,7 @@ import { BASE_URL } from "../helpers/baseUrl";
 import { useState, useEffect } from "react";
 import Preloader from "./Preloader";
 import Banner from "./Banner";
+import { MdAdd } from "react-icons/md";
 import {
   Table,
   Thead,
@@ -13,10 +14,11 @@ import {
   Td,
   TableContainer,
 } from '@chakra-ui/react'
+import { useNavigate } from "react-router-dom";
 
 function Result() {
   const { type } = useParams();
-
+  const navigate = useNavigate();
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -51,8 +53,12 @@ function Result() {
     return <Preloader />;
   }
 
+  const handleAdd = () => {
+    navigate(`/animal/new`);
+  }
+
   return (
-    <>
+    <section className="flex flex-col">
       <Banner text={"Cows"} bgStyle={"bg-cow-banner"} />
       <TableContainer>
         <Table className="table-auto my-4 m-auto rounded-lg max-h-[550px] w-5/6 overflow-scroll">
@@ -112,7 +118,10 @@ function Result() {
           </Tbody>
         </Table>
       </TableContainer>
-    </>
+      <button onClick={handleAdd} className="border-2 border-blue-700 w-16 h-16 rounded-[30%] self-center mx-[20px] my-[20px] flex justify-center items-center ">
+        <MdAdd className="text-5xl" />
+      </button>
+    </section>
   );
 }
 
