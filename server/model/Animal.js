@@ -21,7 +21,7 @@ const animalSchema = new Schema({
   },
   healthStatus: {
     type: String,
-    required: true,
+    default: "Healthy", // Healthy, Sick, Recovering
   },
   productionHistory: [productSchema],
   vaccinationHistory: [vaccinationSchema],
