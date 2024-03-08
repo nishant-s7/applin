@@ -4,7 +4,8 @@ import Landing from './Landing';
 import Reveal from "./Reveal";
 import Sales from "./Sales";
 import Expenses from "./Expenses";
-import Health from "./Health";
+import Add from "./Add";
+import Info from "./Info";
 import Result from "./Result";
 
-export { Header, Footer, Landing, Reveal, Sales, Expenses, Health, Result };
+export { Header, Footer, Landing, Reveal, Sales, Expenses, Add, Info, Result };

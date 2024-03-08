@@ -7,6 +7,10 @@ const animalSchema = new Schema({
     type: String,
     required: true,
   },
+  gender: {
+    type: String,
+    default: "Male",
+  },
   breed: {
     type: String,
     required: true,

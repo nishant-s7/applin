@@ -2,6 +2,7 @@ import { GiHealthNormal } from "react-icons/gi";
 import { FaCow, FaMoneyBillTrendUp } from "react-icons/fa6";
 import { GrMoney } from "react-icons/gr";
 import { Link, useLocation } from "react-router-dom";
+import { FaInfoCircle } from "react-icons/fa";
 
 const Footer = () => {
   const location = useLocation();
@@ -12,40 +13,49 @@ const Footer = () => {
       style={{ position: "fixed", bottom: "0" }}
     >
       <Link
-        className={`flex flex-col justify-center items-center h-16 w-16 ${
-          location.pathname === "/" ? "text-green-400 font-bold" : ""
+        className={`flex flex-col justify-center items-center h-12 w-12 ${
+          location.pathname === "/" ? "text-green-300 font-bold" : ""
         }`}
         to={"/"}
       >
         <FaCow className="text-4xl" />
-        <p>Animals</p>
+        <p className="text-xs">Animals</p>
       </Link>
       <Link
-        className={`flex flex-col justify-center items-center h-16 w-16 ${
-          location.pathname === "/sales" ? "text-yellow-400 font-bold" : ""
+        className={`flex flex-col justify-center items-center h-12 w-12 ${
+          location.pathname === "/sales" ? "text-yellow-300 font-bold" : ""
         }`}
         to={"/sales"}
       >
         <GrMoney className="text-4xl" />
-        <p>Sales</p>
+        <p className="text-xs">Sales</p>
       </Link>
       <Link
-        className={`flex flex-col justify-center items-center h-16 w-16 ${
-          location.pathname === "/expenses" ? "text-blue-400 font-bold" : ""
+        className={`flex flex-col justify-center items-center h-12 w-12 ${
+          location.pathname === "/expenses" ? "text-blue-300 font-bold" : ""
         }`}
         to={"/expenses"}
       >
         <FaMoneyBillTrendUp className="text-4xl" />
-        <p>Expenses</p>
+        <p className="text-xs">Expenses</p>
       </Link>
       <Link
-        className={`flex flex-col justify-center items-center h-16 w-16 ${
-          location.pathname === "/health" ? "text-red-400 font-bold" : ""
+        className={`flex flex-col justify-center items-center h-12 w-12 ${
+          location.pathname === "/add" ? "text-red-300 font-bold" : ""
         }`}
-        to={"/health"}
+        to={"/add"}
       >
         <GiHealthNormal className="text-4xl" />
-        <p>Health</p>
+        <p className="text-xs">Add</p>
+      </Link>
+      <Link
+        className={`flex flex-col justify-center items-center h-12 w-12 ${
+          location.pathname === "/info" ? "text-purple-300 font-bold" : ""
+        }`}
+        to={"/info"}
+      >
+        <FaInfoCircle className="text-4xl" />
+        <p className="text-xs">Info</p>
       </Link>
     </div>
   );
