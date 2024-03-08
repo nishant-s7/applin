@@ -2,7 +2,7 @@ import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Header, Footer } from "./components";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userToken, userId as setuserId } from "./store/authSlice";
+import { userToken, userId as setuserId, login } from "./store/authSlice";
 
 const App = () => { 
   const dispatch = useDispatch();
@@ -38,6 +38,7 @@ const App = () => {
     if (token) {
       dispatch(userToken(token));
       dispatch(setuserId(userId));
+      dispatch(login(true))
     }
   }, []);
   const isAuthPage = location.pathname === "/login" || location.pathname === "/signup";

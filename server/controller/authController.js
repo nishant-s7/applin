@@ -192,6 +192,7 @@ exports.getResetPassword = async (req, res, next) => {
 };
 
 exports.getLogout = async (req, res, next) => {
+  console.log("Logging out")
   try {
     await res.clearCookie("jwt");
     res.status(201).json({ message: "User Logged Out." });

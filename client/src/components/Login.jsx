@@ -89,7 +89,7 @@ export const Login = () => {
     }
     }
   return (
-    <section class=" bg-white rounded-3xl">
+    <section class=" bg-white rounded-3xl rounded-b-none">
       <div class="container flex items-center justify-center min-h-screen px-6 mx-auto">
         <form class="w-full max-w-md" onSubmit={handleSubmit}>
           <div class="flex justify-center mx-auto">
