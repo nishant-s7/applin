@@ -61,7 +61,7 @@ export const SignUp = () => {
   };
 
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white rounded-3xl">
       <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
         <form className="w-full max-w-md" onSubmit={handleSubmit}>
         <div class="flex justify-center mx-auto">
@@ -75,14 +75,14 @@ export const SignUp = () => {
           <div className="flex items-center justify-center mt-6">
             <Link
               to="/login"
-              className="w-1/3 pb-4 font-medium text-center text-gray-500 capitalize border-b dark:border-gray-400 dark:text-gray-300"
+              className="w-1/3 pb-4 font-medium text-center text-gray-500 capitalize border-b border-gray-2 "
             >
               Sign in
             </Link>
 
             <Link
               href="/signup"
-              className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white"
+              className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-color2 dark:border-blue-400 dark:text-white"
             >
               Sign up
             </Link>
@@ -166,14 +166,14 @@ export const SignUp = () => {
           </div>
 
           <div className="mt-6">
-            <button type="submit" className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+            <button type="submit" className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-color2 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
               Sign Up
             </button>
 
             <div className="mt-6 text-center ">
               <Link
                 to="/login"
-                className="text-sm text-blue-500 hover:underline dark:text-blue-400"
+                className="text-sm text-color3 hover:underline dark:text-blue-400"
               >
                 Already have an account?
               </Link>

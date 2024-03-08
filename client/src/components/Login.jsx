@@ -89,7 +89,7 @@ export const Login = () => {
     }
     }
   return (
-    <section class="bg-white ">
+    <section class=" bg-white rounded-3xl">
       <div class="container flex items-center justify-center min-h-screen px-6 mx-auto">
         <form class="w-full max-w-md" onSubmit={handleSubmit}>
           <div class="flex justify-center mx-auto">
@@ -103,14 +103,14 @@ export const Login = () => {
           <div class="flex items-center justify-center mt-6">
             <Link
               to="/login"
-              class="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white"
+              class="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-color2 dark:border-blue-400 dark:text-white"
             >
               Sign in
             </Link>
 
             <Link
               to="/signup"
-              class="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b border-blue-500 dark:border-blue-400 dark:text-white dark:border-gray-400 dark:text-gray-300"
+              class="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b border-gray-300 dark:border-blue-400 dark:text-white dark:border-gray-400 dark:text-gray-300"
             >
               Sign up
             </Link>
@@ -168,14 +168,14 @@ export const Login = () => {
           </div>
 
           <div class="mt-6">
-            <button type="submit" class="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+            <button type="submit" class="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-color2 rounded-lg hover:bg-color3 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
               Sign Up
             </button>
 
             <div class="mt-6 text-center ">
               <Link
                 to="/signup"
-                class="text-sm text-blue-500 hover:underline dark:text-blue-400"
+                class="text-sm text-color3 hover:underline dark:text-blue-400"
               >
                 Don't Have an Account? Register
               </Link>
