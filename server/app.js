@@ -14,7 +14,7 @@ const animalRoutes = require("./routes/animalRoutes");
 const MONGO_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@applin.2urmjpy.mongodb.net/applin`;
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({

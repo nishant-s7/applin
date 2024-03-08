@@ -4,7 +4,7 @@ import {
     Route,
   } from "react-router-dom";
 import App from "./App";
-import { Landing, Sales, Expenses, Health } from "./components";
+import { Landing, Sales, Expenses, Health, Result } from "./components";
 import { SignUp } from "./components/SignUp";
 import { Login } from "./components/Login";
 
@@ -17,6 +17,7 @@ const router = createBrowserRouter(
       <Route path="/health" element={<Health />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/animal/:type" element={<Result />} />
     </Route>
   )
 );

@@ -36,8 +36,10 @@ exports.getAnimal = async (req, res, next) => {
 
 exports.getAnimals = async (req, res, next) => {
   try {
-    const animals = await Animal.find();
+    const type = req.body.type;
+    const animals = await Animal.find({ type: type });
     res.status(200).json({ message: "Fetched animals", animals: animals });
+    console.log(animals);
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
