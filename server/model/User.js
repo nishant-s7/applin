@@ -25,12 +25,12 @@ const userSchema = new Schema({
   animals: [
     {
       type: {
-        type: Schema.Types.ObjectId,
-        Ref: "Animal",
+        type: String,
+        required: true,
       },
       count: {
         type: Number,
-        required: true,
+        default: 0,
       },
     },
   ],

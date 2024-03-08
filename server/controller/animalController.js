@@ -11,9 +11,9 @@ exports.addAnimal = async (req, res, next) => {
       breed,
       dob,
       gender,
-      user: userId
+      user: userId,
     });
-    const result = await animal.save();
+    await animal.save();
 
     const user = await User.findById(userId);
     if (!user) {
@@ -21,8 +21,20 @@ exports.addAnimal = async (req, res, next) => {
       error.statusCode = 404;
       throw error;
     }
-    user.animals.push(result._id);
-    res.status(201).json({ message: "Animal created!", animalId: result._id });
+
+    const flag = false;
+    user.animals.find((animal) => {
+      if (animal.type === type) {
+        animal.count++;
+        flag = true;
+      }
+    });
+    if (!flag) {
+      user.animals.push({ type: type, count: 1 });
+    }
+    await user.save();
+
+    res.status(201).json({ message: "Animal created!" });
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
@@ -50,8 +62,8 @@ exports.getAnimal = async (req, res, next) => {
 
 exports.getAnimals = async (req, res, next) => {
   try {
-    const type = req.body.type;
-    const animals = await Animal.find({ type: type });
+    const { type, userId } = req.body;
+    const animals = await Animal.find({ type: type, user: userId });
     res.status(200).json({ message: "Fetched animals", animals: animals });
   } catch (err) {
     if (!err.statusCode) {
