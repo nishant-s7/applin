@@ -3,9 +3,11 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { useState } from "react";
 import { BASE_URL } from "../helpers/baseUrl";
 import { useToast } from "@chakra-ui/toast";
+import { useDispatch } from "react-redux";
+import { login, userId, userToken } from "../store/authSlice";
 export const Login = () => {
     const router = useNavigate();
-    
+    const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     phone: "",
     password: "",
@@ -18,6 +20,19 @@ export const Login = () => {
       [name]: value,
     });
   };
+  const logoutHandler = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("expiryDate");
+    localStorage.removeItem("userId");
+    router("/");
+  };
+
+  const setAutoLogout = (milliseconds) => {
+    setTimeout(() => {
+      logoutHandler();
+    }, milliseconds);
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,6 +71,9 @@ export const Login = () => {
           });
           localStorage.setItem("token", res.token);
           localStorage.setItem("userId", res.userId);
+          dispatch(userToken(res.token));
+          dispatch(login(true));
+          dispatch(userId(res.userId))
           const remainingMilliseconds = 60 * 60 * 1000;
           const expiryDate = new Date(
             new Date().getTime() + remainingMilliseconds

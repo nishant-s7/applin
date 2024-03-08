@@ -1,6 +1,6 @@
 # Applin
 
-## PS -  Dairy Farm Manager
+## PS -  Dairy Farm Managert
 Cost model, consumption, production and management (Cow, Buffalo)
 
 ## Things to Implement

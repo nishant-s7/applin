@@ -6,22 +6,25 @@ const expenseSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
-      Ref:'User'
-    },
-    category: {
-      type: String,
-      required: true,
+      Ref: "User",
     },
     amount: {
       type: Number,
       required: true,
     },
+    products: [
+      {
+        product: {
+          type: Schema.Types.ObjectId,
+          Ref: "Product",
+        },
+      },
+    ],
     description: {
       type: String,
-      required: true,
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Expense", expenseSchema);
+module.exports = mongoose.model("Sales", expenseSchema);
