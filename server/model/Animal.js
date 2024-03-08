@@ -1,9 +1,5 @@
 const mongoose = require("mongoose");
 
-const productSchema = require("./Product");
-const vaccinationSchema = require("./Vaccination");
-const breedingSchema = require("./Breeding");
-
 const Schema = mongoose.Schema;
 
 const animalSchema = new Schema({
@@ -21,11 +17,26 @@ const animalSchema = new Schema({
   },
   healthStatus: {
     type: String,
-    required: true,
+    default: "Healthy", // Healthy, Sick, Recovering
   },
-  productionHistory: [productSchema],
-  vaccinationHistory: [vaccinationSchema],
-  breedingHistory: [breedingSchema],
+  productionHistory: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
+  vaccinationHistory: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Vaccination",
+    },
+  ],
+  breedingHistory: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Breeding",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Animal", animalSchema);

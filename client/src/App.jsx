@@ -7,7 +7,7 @@ const App = () => {
       <Outlet />
       <Footer />
     </section>
-  )
+  );
 }
 
 export default App;
