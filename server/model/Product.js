@@ -22,7 +22,7 @@ const productSchema = new Schema(
     },
     status: {
       type: String,
-      default: "Available", // Available, Sold
+      default: "Available", // Available, Sold, Expired
     },
   },
   { timestamps: true }
