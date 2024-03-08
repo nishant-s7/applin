@@ -11,7 +11,7 @@ const morgan = require("morgan");
 const fs = require("fs");
 const path = require("path");
 
-const MONGO_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@applin.2urmjpy.mongodb.net/`;
+const MONGO_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@applin.2urmjpy.mongodb.net/applin`;
 const app = express();
 
 const PORT = process.env.PORT || 8080;

@@ -15,9 +15,10 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.signup = async (req, res, next) => {
-  const { email, password,  } = req.body;
+  const { email, password, phone } = req.body;
+  
   try {
-    const enteredUser = await User.findOne({ email: email });
+    const enteredUser = await User.findOne({ phoneNo: phone });
     if (enteredUser) {
       res
         .status(433)
@@ -27,6 +28,7 @@ exports.signup = async (req, res, next) => {
       const user = new User({
         email: email,
         password: hashedPassword,
+        phoneNo: phone
       });
       const result = await user.save();
       res
@@ -40,10 +42,10 @@ exports.signup = async (req, res, next) => {
 };
 
 exports.login = async (req, res, next) => {
-  const email = req.body.email;
+  const phone = req.body.phone;
   const password = req.body.password;
   try {
-    const enteredUser = await User.findOne({ email: email });
+    const enteredUser = await User.findOne({ phoneNo: phone });
     if (enteredUser) {
       const passwordCheck = await bcrypt.compare(
         password,
