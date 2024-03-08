@@ -29,7 +29,7 @@ function Reveal({children, width}) {
         initial="hidden"
         animate={mainControls}
         transition={{
-            duration: 0.75,
+            duration: 0.50,
             ease: "easeInOut",
             delay: 0.5
         }}
