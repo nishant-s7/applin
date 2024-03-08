@@ -14,7 +14,9 @@ const Footer = () => {
     >
       <Link
         className={`flex flex-col justify-center items-center h-12 w-12 ${
-          location.pathname === "/" ? "text-green-300 font-bold" : ""
+          location.pathname === "/" || location.pathname.startsWith("/animal")
+            ? "text-green-300 font-bold"
+            : ""
         }`}
         to={"/"}
       >
@@ -23,7 +25,9 @@ const Footer = () => {
       </Link>
       <Link
         className={`flex flex-col justify-center items-center h-12 w-12 ${
-          location.pathname === "/sales" ? "text-yellow-300 font-bold" : ""
+          location.pathname.startsWith("/sales")
+            ? "text-yellow-300 font-bold"
+            : ""
         }`}
         to={"/sales"}
       >
@@ -32,7 +36,9 @@ const Footer = () => {
       </Link>
       <Link
         className={`flex flex-col justify-center items-center h-12 w-12 ${
-          location.pathname === "/expenses" ? "text-blue-300 font-bold" : ""
+          location.pathname.startsWith("/expenses")
+            ? "text-blue-300 font-bold"
+            : ""
         }`}
         to={"/expenses"}
       >
@@ -41,7 +47,7 @@ const Footer = () => {
       </Link>
       <Link
         className={`flex flex-col justify-center items-center h-12 w-12 ${
-          location.pathname === "/add" ? "text-red-300 font-bold" : ""
+          location.pathname.startsWith("/add") ? "text-red-300 font-bold" : ""
         }`}
         to={"/add"}
       >
@@ -50,7 +56,9 @@ const Footer = () => {
       </Link>
       <Link
         className={`flex flex-col justify-center items-center h-12 w-12 ${
-          location.pathname === "/info" ? "text-purple-300 font-bold" : ""
+          location.pathname.startsWith("/info")
+            ? "text-purple-300 font-bold"
+            : ""
         }`}
         to={"/info"}
       >

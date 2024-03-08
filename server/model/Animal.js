@@ -23,6 +23,10 @@ const animalSchema = new Schema({
     type: String,
     default: "Healthy", // Healthy, Sick, Recovering
   },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
   productionHistory: [
     {
       type: Schema.Types.ObjectId,

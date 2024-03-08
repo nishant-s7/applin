@@ -7,5 +7,6 @@ import Expenses from "./Expenses";
 import Add from "./Add";
 import Info from "./Info";
 import Result from "./Result";
+import AnimalDetails from "./AnimalDetails/AnimalDetails";
 
-export { Header, Footer, Landing, Reveal, Sales, Expenses, Add, Info, Result };
+export { Header, Footer, Landing, Reveal, Sales, Expenses, Add, Info, Result, AnimalDetails };
