@@ -12,6 +12,10 @@ const productSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Animal",
     },
+    status: {
+      type: String,
+      default: "Available", // Available, Sold
+    },
   },
   { timestamps: true }
 );
