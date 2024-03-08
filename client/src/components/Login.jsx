@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import { FaPhoneAlt } from "react-icons/fa";
 import { useState } from "react";
 import { BASE_URL } from "../helpers/baseUrl";
-
+import { useToast } from "@chakra-ui/toast";
 export const Login = () => {
   const [formData, setFormData] = useState({
     phone: "",
     password: "",
   });
-
+  const toast = useToast();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({

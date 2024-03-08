@@ -1,24 +1,23 @@
+require("dotenv").config();
+const fs = require("fs");
+const path = require("path");
 const express = require("express");
-const dotenv = require("dotenv").config();
-const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const authRoutes = require("./routes/authRoutes");
-
 const morgan = require("morgan");
-const fs = require("fs");
-const path = require("path");
+
+const authRoutes = require("./routes/authRoutes");
+const animalRoutes = require("./routes/animalRoutes");
 
 const MONGO_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@applin.2urmjpy.mongodb.net/applin`;
-const app = express();
 
+const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(
   cors({
-   
     methods: ["POST", "GET", "HEAD", "PUT", "DELETE"],
     credentials: true,
   })
@@ -26,19 +25,17 @@ app.use(
 
 app.use(cookieParser());
 app.use(express.json());
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use(
-  morgan(
-    (tokens, req, res) => {
-      return [
-        tokens.method(req, res),
-        tokens.url(req, res),
-        tokens.status(req, res),
-      ].join(" ");
-    }
-  )
+  morgan((tokens, req, res) => {
+    return [
+      tokens.method(req, res),
+      tokens.url(req, res),
+      tokens.status(req, res),
+    ].join(" ");
+  })
 );
-
 
 app.use(
   fileUpload({
@@ -46,10 +43,8 @@ app.use(
   })
 );
 
-app.use("/images", express.static(path.join(__dirname, "images")));
-
-app.use('/auth',authRoutes);
-
+app.use("/auth", authRoutes);
+app.use("/animal", animalRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
@@ -61,5 +56,5 @@ app.use((error, req, res, next) => {
 
 mongoose.connect(MONGO_URI).then(() => {
   app.listen(PORT);
-  console.log("connected");
+  console.log(`Server running on port ${PORT}`);
 });

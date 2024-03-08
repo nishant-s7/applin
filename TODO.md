@@ -7,19 +7,16 @@ Cost model, consumption, production and management (Cow, Buffalo)
 - **Herd Management & Individual Animal Tracking**
 
   - [ ] Individual animal profiles
-  - [ ] Disease and treatment tracking
+  - [ ] Animal Health tracking
   - [ ] Breeding management
   - [ ] Production monitoring
 
 - **Farm Operations & Financial Management**
 
   - [ ] Feed management
-  - [ ] Sales management
-  - [ ] Task management
   - [ ] Expense Tracking
 
 ## Planned Schema
-
 
 - **User**
   - firstName
@@ -52,3 +49,10 @@ Cost model, consumption, production and management (Cow, Buffalo)
   - inseminationDate
   - expectedDeliveryDate
   - Animal
+
+# Pages
+
+1. Animals
+1. Sales
+1. Expenses
+1. Breeding
