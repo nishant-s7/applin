@@ -15,19 +15,21 @@ import {
   TableContainer,
 } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 function Result() {
   const { type } = useParams();
   const navigate = useNavigate();
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const userId = useSelector(state => state.auth.userId);
   const colorHead = false;
 
   const fetchAnimals = async () => {
     try {
       const response = await axios.post(`${BASE_URL}animal/getAnimals`, {
         type: type,
+        userId: userId
       });
       if (Array.isArray(response.data.animals)) {
         setResult(response.data.animals);
