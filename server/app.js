@@ -18,16 +18,14 @@ const PORT = process.env.PORT || 8080;
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-    ],
+   
     methods: ["POST", "GET", "HEAD", "PUT", "DELETE"],
     credentials: true,
   })
 );
 
 app.use(cookieParser());
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use(
   morgan(
@@ -50,7 +48,7 @@ app.use(
 
 app.use("/images", express.static(path.join(__dirname, "images")));
 
-app.use(authRoutes);
+app.use('/auth',authRoutes);
 
 
 app.use((error, req, res, next) => {
