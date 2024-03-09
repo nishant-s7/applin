@@ -43,7 +43,7 @@ function Landing() {
               </div>
             </Link>
           </Reveal>
-        </>
+        </>)
       }
       {
         !userLoggedIn &&
