@@ -44,8 +44,13 @@ function Landing() {
             </Link>
           </Reveal>
         </>
-      )}
-      {!userLoggedIn && <img src="/images/cow.png" />}
+      }
+      {
+        !userLoggedIn &&
+        <div>
+          
+        </div>
+      }
     </div>
   );
 }
