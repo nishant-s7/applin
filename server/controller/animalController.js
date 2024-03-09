@@ -103,6 +103,10 @@ exports.addProduct = async (req, res, next) => {
   }
 };
 
+exports.getProducts = async (req, res, next) => {
+
+}
+
 exports.vaccinateAnimal = async (req, res, next) => {
   const { animalId, name, administeredDate, nextDueDate } = req.body;
   try {
