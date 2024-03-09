@@ -23,7 +23,7 @@ exports.addAnimal = async (req, res, next) => {
       throw error;
     }
 
-    const flag = false;
+    let flag = false;
     user.animals.find((animal) => {
       if (animal.type === type) {
         animal.count++;
