@@ -41,7 +41,14 @@ const AddAnimal = () => {
   };
 
   return (
-    <Box maxW="full" borderWidth="1px" p="4" boxShadow="sm" backgroundColor='white' className="rounded-t-xl">
+    <Box
+      maxW="full"
+      borderWidth="1px"
+      p="4"
+      boxShadow="sm"
+      backgroundColor="white"
+      className="rounded-t-xl"
+    >
       <form onSubmit={handleSubmit}>
         <FormControl id="animalType" isRequired>
           <FormLabel>Type</FormLabel>
@@ -50,17 +57,14 @@ const AddAnimal = () => {
             value={animalType}
             onChange={(e) => setAnimalType(e.target.value)}
           >
-            <option value="cow">Cow</option>
-            <option value="goat">Goat</option>
-            <option value="buffalo">Buffalo</option>
+            <option value="Cow">Cow</option>
+            <option value="Goat">Goat</option>
+            <option value="Buffalo">Buffalo</option>
           </Select>
         </FormControl>
         <FormControl id="gender" isRequired>
           <FormLabel>Gender</FormLabel>
-          <Select
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-          >
+          <Select value={gender} onChange={(e) => setGender(e.target.value)}>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </Select>
