@@ -1,17 +1,36 @@
-import { GiHealthNormal } from "react-icons/gi";
-import { FaCow, FaMoneyBillTrendUp } from "react-icons/fa6";
+import { IoNotifications } from "react-icons/io5";
+import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { GrMoney } from "react-icons/gr";
-import { Link, useLocation } from "react-router-dom";
 import { FaHome, FaInfoCircle } from "react-icons/fa";
-import { useState, useEffect } from "react";
+
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import { BASE_URL } from "../helpers/baseUrl";
+
 const Footer = () => {
   const location = useLocation();
   const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [messageCount, setMessageCount] = useState(0);
+
+  const showAlert = useRef(true);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) window.location.href = "/login";
     else setUserLoggedIn(true);
+
+    axios
+      .post(`${BASE_URL}messages/sendMessages`, {
+        userId: localStorage.getItem("userId"),
+      })
+      .then((res) => {
+        console.log(res.data.count);
+        setMessageCount(res.data.count);
+      })
+      .catch((err) => console.log(err));
   }, []);
+
   return (
     <div
       className="w-full min-h-fit bg-color2 "
@@ -90,7 +109,7 @@ const Footer = () => {
             </div>
             <div className="flex flex-col items-center">
               <div
-                className={`${
+                className={`relative ${
                   location.pathname.startsWith("/add")
                     ? "bg-green-800 rounded-full"
                     : ""
@@ -103,11 +122,17 @@ const Footer = () => {
                       : "text-color2"
                   }`}
                   to={"/add"}
+                  onClick={() => showAlert.current = false}
                 >
-                  <GiHealthNormal className="text-2xl" />
+                  <IoNotifications className="text-2xl" />
                 </Link>
+                {(messageCount > 0 && showAlert.current) && (
+                  <div className="bg-red-600 rounded-full h-5 w-5 absolute top-0 right-0 flex items-center justify-center text-xs">
+                    {messageCount}
+                  </div>
+                )}
               </div>
-              <p className="text-xs text-gray-700">Add</p>
+              <p className="text-xs text-gray-700">Alerts</p>
             </div>
             <div className="flex flex-col items-center">
               <div
