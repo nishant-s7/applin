@@ -3,7 +3,7 @@ import Reveal from "./Reveal";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { userInfo } from "../store/authSlice";
+import { userInfo as sendInfo } from "../store/authSlice";
 function Landing() {
   const [userLoggedIn, setuserLoggedIn] = useState(false);
   const userInfo = useSelector((state) => state.auth.userInfo);
@@ -20,13 +20,15 @@ function Landing() {
     })
       .then((res) => res.json())
       .then((data) => {
-        dispatch(userInfo(data.user));
+        console.log(data.user);
+        dispatch(sendInfo(data.user));
       });
   };
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     const token = localStorage.getItem("token");
     const userInfo = localStorage.getItem("userInfo");
+    fetchUserData(userId, token);
     if (!token) {
       window.location.href = "/login";
     } else {
@@ -50,7 +52,7 @@ function Landing() {
           <div className="p-4 rounded-xl shadow-lg border-2 w-full">
             <h2 className="text-left text-xl font-bold " >Pet Summary : </h2>
             <div className="flex mt-3 flex-wrap justify-between items-center">
-            {userInfo.animals.map((animal, index) => (
+            {   userInfo?.animals?.map((animal, index) => (
                 <div key={index} className="flex flex-col w-1/2 gap-4">
                   <h3 className="text-lg">{`Total ${animal.type}s: ${animal.count}`}</h3>
                 </div>
@@ -87,7 +89,10 @@ function Landing() {
           </div>
         </>
       )}
-      {!userLoggedIn && <div></div>}
+      {!userLoggedIn && <div className="h-screen flex justify-center items-center">
+        
+        <img src="/images/cow.png" />
+        </div>}
     </div>
   );
 }
