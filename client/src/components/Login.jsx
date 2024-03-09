@@ -4,7 +4,7 @@ import { useState } from "react";
 import { BASE_URL } from "../helpers/baseUrl";
 import { useToast } from "@chakra-ui/toast";
 import { useDispatch } from "react-redux";
-import { login, userId, userToken } from "../store/authSlice";
+import { login, userId, userToken, userInfo } from "../store/authSlice";
 export const Login = () => {
     const router = useNavigate();
     const dispatch = useDispatch();
@@ -71,9 +71,11 @@ export const Login = () => {
           });
           localStorage.setItem("token", res.token);
           localStorage.setItem("userId", res.userId);
+          localStorage.setItem("user", res.user);
           dispatch(userToken(res.token));
           dispatch(login(true));
-          dispatch(userId(res.userId))
+          dispatch(userId(res.userId));
+          dispatch(userInfo(res.user));
           const remainingMilliseconds = 60 * 60 * 1000;
           const expiryDate = new Date(
             new Date().getTime() + remainingMilliseconds

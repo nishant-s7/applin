@@ -4,6 +4,8 @@ const router = express.Router();
 
 router.post("/signup", authController.signup);
 
+router.post("/myinfo", authController.getMyInfo);
+
 router.post("/login", authController.login);
 
 router.get("/logout", authController.getLogout);
