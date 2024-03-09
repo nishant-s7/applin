@@ -4,8 +4,8 @@ import { useState } from "react";
 import { BASE_URL } from "../helpers/baseUrl";
 import { useToast } from "@chakra-ui/toast";
 import { useDispatch } from "react-redux";
-import { login, userId, userToken } from "../store/authSlice";
-import Preloader from "./Preloader";
+
+import { login, userId, userToken, userInfo } from "../store/authSlice";
 
 export const Login = () => {
   const router = useNavigate();
@@ -68,24 +68,27 @@ export const Login = () => {
       } else if (response.status == 201) {
         // setbuttondisabled(false)
 
-        toast({
-          title: res.message,
-          status: "success",
-          isClosable: true,
-        });
-        localStorage.setItem("token", res.token);
-        localStorage.setItem("userId", res.userId);
-        dispatch(userToken(res.token));
-        dispatch(login(true));
-        dispatch(userId(res.userId))
-        const remainingMilliseconds = 60 * 60 * 1000;
-        const expiryDate = new Date(
-          new Date().getTime() + remainingMilliseconds
-        );
-        localStorage.setItem("expiryDate", expiryDate.toISOString());
-        router("/");
-      }
-      else {
+          toast({
+            title: res.message,
+            status: "success",
+            isClosable: true,
+          });
+          localStorage.setItem("token", res.token);
+          localStorage.setItem("userId", res.userId);
+          localStorage.setItem("user", res.user);
+          dispatch(userToken(res.token));
+          dispatch(login(true));
+          dispatch(userId(res.userId));
+          dispatch(userInfo(res.user));
+          const remainingMilliseconds = 60 * 60 * 1000;
+          const expiryDate = new Date(
+            new Date().getTime() + remainingMilliseconds
+          );
+          localStorage.setItem("expiryDate", expiryDate.toISOString());
+          router("/");
+        }
+       else {
+
         router.push("/login");
       }
     } catch (err) {

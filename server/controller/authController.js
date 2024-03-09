@@ -72,11 +72,31 @@ exports.login = async (req, res, next) => {
           message: "User logged In",
           token: token,
           userId: enteredUser._id.toString(),
+          user: enteredUser,
         });
       } else {
         res.status(433).json({ message: "User entered Incorrect password" });
       }
     } else {
+      res.status(403).json({ message: "No such user found." });
+    }
+  } catch (err) {
+    console.log(err);
+    next();
+  }
+};
+
+exports.getMyInfo = async (req, res, next) => {
+  const phone = req.body.userId;
+  console.log(phone)
+  try {
+    const enteredUser = await User.findOne({ _id: phone });
+    if (enteredUser) {
+        res.status(201).json({
+          user: enteredUser,
+        });
+      } 
+    else {
       res.status(403).json({ message: "No such user found." });
     }
   } catch (err) {

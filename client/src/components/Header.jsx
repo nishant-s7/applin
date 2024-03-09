@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { DrawerExample } from "./Sidebar";
 import { useSelector } from "react-redux";
+import { GiCow } from "react-icons/gi";
 
 function Header() {
   const location = useLocation();
@@ -13,8 +14,8 @@ function Header() {
       {isAuthenticated && (
         <div className="w-full h-fit bg-color2 text-white font-bold p-2 py-3">
           <div className="flex">
-            <div className="flex-1">
-              <h1 className="text-2xl">DairyHub</h1>
+            <div className="flex">
+              <h1 className="text-2xl">DairyDash</h1> <GiCow />
             </div>
             <div className="flex-1 flex justify-end items-center space-x-4">
               {location.pathname !== "/" && isAuthenticated && (
@@ -33,7 +34,7 @@ function Header() {
           <div className="w-full h-fit bg-color2 text-white font-bold p-2 py-3">
             <div className="flex">
               <div className="flex-1">
-                <h1 className="text-2xl">DairyHub</h1>
+                <h1 className="text-2xl">DairyDash</h1>
               </div>
               <div className="flex-1 flex justify-end items-center space-x-4">
                 {location.pathname !== "/" && isAuthenticated && (
