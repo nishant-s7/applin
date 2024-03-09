@@ -21,8 +21,12 @@ exports.getMessages = async (req, res, next) => {
 exports.sendMessages = async (req, res, next) => {
   const { userId } = req.body;
   try {
+    // glt hai
+    await Message.deleteMany();
+
     const animals = await Animal.find({ user: userId }).select("_id");
 
+    let count = 0;
     for (let j = 0; j < animals.length; j++) {
       const currentAnimal = await Animal.findById(animals[j]._id).populate([
         "productionHistory",
@@ -38,6 +42,7 @@ exports.sendMessages = async (req, res, next) => {
             currentAnimal.productionHistory[i].status = "Expired";
             await currentAnimal.productionHistory[i].save();
           } else if (buffer > 0 && buffer <= 24 * 60 * 60 * 1000) {
+            count++;
             const message = new Message({
               user: userId,
               type: "Product",
@@ -54,6 +59,7 @@ exports.sendMessages = async (req, res, next) => {
           new Date(currentAnimal.vaccinationHistory[i].nextDueDate) -
           new Date();
         if (buffer > 0 && buffer <= 7 * 24 * 60 * 60 * 1000) {
+          count++;
           const message = new Message({
             user: userId,
             type: "Vaccine",
@@ -69,6 +75,7 @@ exports.sendMessages = async (req, res, next) => {
           new Date(currentAnimal.breedingHistory[i].expectedDeliveryDate) -
           new Date();
         if (buffer > 0 && buffer <= 14 * 24 * 60 * 60 * 1000) {
+          count++;
           const message = new Message({
             user: userId,
             type: "Breed",
@@ -79,7 +86,7 @@ exports.sendMessages = async (req, res, next) => {
         }
       }
     }
-    res.status(201).json({ message: "Message sent!" });
+    res.status(201).json({ message: "Message sent!", count });
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
