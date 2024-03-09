@@ -46,7 +46,7 @@ function Landing() {
                 Hi {userInfo.firstName} {userInfo.lastName}!
               </span>{" "}
               <br />
-              Welcome to the DairyDash.
+              Welcome to DairyDash
             </h1>
             <img className="w-14 rounded-full h-14" src={userInfo.profile} />
           </div>
