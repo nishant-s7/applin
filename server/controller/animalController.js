@@ -104,7 +104,22 @@ exports.addProduct = async (req, res, next) => {
 };
 
 exports.getProducts = async (req, res, next) => {
+  const userId = req.body.userId;
+  try {
+    const animals = await Animal.find({ user: userId }).select("_id");
 
+    let products;
+    for (let i = 0; i < animals.length; i++) {
+      products.push(await Product.find({ animal: animals[i]._id, status: "Available"}));
+    }
+
+    res.status(200).json({ message: "Fetched products", products: products });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
 }
 
 exports.vaccinateAnimal = async (req, res, next) => {
