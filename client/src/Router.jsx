@@ -4,7 +4,7 @@ import {
     Route,
   } from "react-router-dom";
 import App from "./App";
-import { Landing, Sales, Expenses, Notifications, Info, Result, AnimalDetails, AddAnimal } from "./components";
+import { Landing, Sales, Expenses, Notifications, Info, Result, AnimalDetails, AddAnimal, AddSales, AddExpenses } from "./components";
 import {Details, Produce, Vaccine, Breeding} from "./components/AnimalDetails"
 import { SignUp } from "./components/SignUp";
 import { Login } from "./components/Login";
@@ -14,7 +14,9 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index element={<Landing />} />
       <Route path="/sales" element={<Sales />} />
+      <Route path="/sales/new" element={<AddSales />} />
       <Route path="/expenses" element={<Expenses />} />
+      <Route path="/expenses/new" element={<AddExpenses />} />
       <Route path="/add" element={<Notifications />} />
       <Route path="/info" element={<Info />} />
       <Route path="/signup" element={<SignUp />} />

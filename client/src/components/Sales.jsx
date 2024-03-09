@@ -3,6 +3,7 @@ import { BASE_URL } from "../helpers/baseUrl";
 import { useState, useEffect } from "react";
 import Preloader from "./Preloader";
 import { MdAdd } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import {
   Table,
   Thead,
@@ -16,6 +17,11 @@ import {
 const Sales = () => {
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  
+  const handleAdd = () => {
+    navigate(`/sales/new`);
+  }
 
   const fetchSales = async () => {
     try {
@@ -66,6 +72,9 @@ const Sales = () => {
           </Tbody>
         </Table>
       </TableContainer>
+      <button onClick={handleAdd} className="border-2 border-color3 w-16 h-16 rounded-[30%] self-center mx-[20px] my-[20px] flex justify-center items-center ">
+        <MdAdd className="text-5xl text-color2" />
+      </button>
     </section>
   )
 }

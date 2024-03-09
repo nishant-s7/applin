@@ -8,7 +8,7 @@ import Notifications from "./Notifications";
 import Info from "./Info";
 import Result from "./Result";
 import AnimalDetails from "./AnimalDetails/AnimalDetails";
-import { AddAnimal } from "./AddForms";
+import { AddAnimal, AddSales, AddExpenses } from "./AddForms";
 
 export {
   Header,
@@ -22,4 +22,6 @@ export {
   Result,
   AnimalDetails,
   AddAnimal,
+  AddSales,
+  AddExpenses
 };
