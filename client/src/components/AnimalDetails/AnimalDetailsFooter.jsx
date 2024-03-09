@@ -11,7 +11,7 @@ const AnimalDetailsFooter = () => {
 
   return (
     <div
-      className="w-4/5 m-auto rounded-lg min-h-fit border-2 border-color2 text-color2 py-2 flex justify-evenly items-center"
+      className="w-4/5 m-auto rounded-lg min-h-fit bg-white border-2 border-color2 text-color2 py-2 flex justify-evenly items-center"
       style={{ position: "sticky", bottom: "0" }}
     >
       <Link

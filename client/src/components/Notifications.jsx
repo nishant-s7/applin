@@ -20,7 +20,7 @@ const Health = () => {
   }, []);
 
   return (
-    <section className="flex flex-col bg-white rounded-t-xl">
+    <section className="flex flex-col bg-white rounded-t-3xl">
       <h1 className="m-auto p-2 font-bold">NOTIFICATIONS</h1>
       {notifications.length === 0 ? (
         <h2 className="m-auto">No Notifications</h2>

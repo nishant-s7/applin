@@ -13,7 +13,7 @@ const Details = () => {
   const params = useParams();
   const [animal, colorHead] = useOutletContext();
   return (
-    <TableContainer>
+    <TableContainer className="bg-white">
       <Table className="table-auto mx-auto rounded-lg max-h-[550px] w-[400px] overflow-scroll">
         <Thead>
           <Tr>

@@ -1,7 +1,7 @@
 import { IoNotifications } from "react-icons/io5";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { GrMoney } from "react-icons/gr";
-import { FaHome, FaInfoCircle } from "react-icons/fa";
+import { FaCloud, FaHome, FaInfoCircle } from "react-icons/fa";
 
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
@@ -150,10 +150,10 @@ const Footer = () => {
                   }`}
                   to={"/info"}
                 >
-                  <FaInfoCircle className="text-2xl" />
+                  <FaCloud className="text-2xl" />
                 </Link>
               </div>
-              <p className="text-xs text-gray-700">Info</p>
+              <p className="text-xs text-gray-700">Weather</p>
             </div>
           </div>
         </>

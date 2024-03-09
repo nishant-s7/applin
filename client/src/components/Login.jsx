@@ -4,7 +4,7 @@ import { useState } from "react";
 import { BASE_URL } from "../helpers/baseUrl";
 import { useToast } from "@chakra-ui/toast";
 import { useDispatch } from "react-redux";
-
+import Preloader from "./Preloader";
 import { login, userId, userToken, userInfo } from "../store/authSlice";
 
 export const Login = () => {

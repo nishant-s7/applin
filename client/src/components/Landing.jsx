@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userInfo as sendInfo } from "../store/authSlice";
+import Preloader from './Preloader';
 function Landing() {
   const [userLoggedIn, setuserLoggedIn] = useState(false);
   const userInfo = useSelector((state) => state.auth.userInfo);

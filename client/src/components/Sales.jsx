@@ -51,7 +51,7 @@ const Sales = () => {
     }
   }
   return (
-    <section className="flex flex-col bg-white rounded-t-xl">
+    <section className="flex flex-col bg-white rounded-t-3xl">
       <TableContainer>
         <Table>
           <Thead>

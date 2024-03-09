@@ -11,7 +11,7 @@ const AnimalDetails = () => {
   const [animal, setAnimal] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const colorHead = true;
+  const colorHead = false;
 
   useEffect(() => {
     axios
@@ -32,7 +32,7 @@ const AnimalDetails = () => {
         <Preloader />
       ) : (
         <>
-          <div className="h-[500px] py-6">
+          <div className="h-[500px] bg-white rounded-t-3xl py-6">
             <Outlet context={[animal, colorHead]}/>
           </div>
           <AnimalDetailsFooter />
